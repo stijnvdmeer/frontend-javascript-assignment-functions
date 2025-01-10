@@ -88,7 +88,7 @@ function calcAvarageGrade(gradeList) {
         count++;
     })
 
-    return (total / count);
+    return Math.round(((total / count) + Number.EPSILON) * 100) / 100;
 }
 
 console.log(calcAvarageGrade(grades));
@@ -99,7 +99,8 @@ console.log(calcAvarageGrade([8, 9, 4, 6, 10]));
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
 
-
+// Dit is aangepast op regel 91
+// Number.Epsilon word gebruikt zodat de 0.005 etc goed worden afgerond
 
 
 /* Bonusopdracht: hoogste cijfer */
