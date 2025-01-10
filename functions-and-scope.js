@@ -154,6 +154,8 @@ console.log(getHighestGrade([8, 9, 4, 6, 10]));
 function getHighestGradeAlternate(gradeList) {
     gradeList.sort((a, b) => a - b);
     return gradeList[gradeList.length - 1];
+
+    // You can also reverse the array using the reverse method, and then call upon the index 0 instead of length - 1
 }
 
 console.log(getHighestGrade(grades));
