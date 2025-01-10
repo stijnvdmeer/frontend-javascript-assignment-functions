@@ -9,6 +9,12 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
+function getEmailDomain(email) {
+    return email.split('@')[1];
+}
+console.log(getEmailDomain("n.eeken@novi-education.nl"));
+console.log(getEmailDomain("t.mellink@novi.nl"));
+console.log(getEmailDomain("a.wiersma@outlook.com"));
 
 
 
@@ -20,6 +26,22 @@
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
 
+function getEmailType(email) {
+    let emailDomain = email.split('@')[1];
+    switch (emailDomain) {
+        case 'novi-education.nl':
+            return "Student"
+        case 'novi.nl':
+            return "Medewerker"
+        default:
+            return "Extern"
+    }
+}
+
+console.log(getEmailType("n.eeken@novi-education.nl"));
+console.log(getEmailType("t.mellink@novi.nl"));
+console.log(getEmailType("novi.nlaapjesk@outlook.com"));
+console.log(getEmailType("a.wiersma@outlook.com"));
 
 
 /* Opdracht  3 */
@@ -30,7 +52,21 @@
 // * Er géén . in voorkomt als allerlaatste karakter (dus hotmail.com is valide, net als outlook.nl, maar outlooknl. niet)
 // ---- Verwachte uitkomsten:
 // checkEmailValidity("n.eeken@novi.nl") geeft true - want @ en punt op de juiste plek
-// checkEmailValidity("tessmellink@novi.nl") geeft true - want @ en punt op de juiste plek
+// checkEmailValidity("n.eeken@novi.nl") geeft true - want @ en punt op de juiste plek
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+function checkEmailValidity(email) {
+    if(!email.includes("@")) return false;
+    if(email.includes(",")) return false;
+    if(email.split("")[email.length - 1] === ".") return false;
+
+    return true;
+}
+
+console.log(checkEmailValidity("n.eeken@novi.nl"));
+console.log(checkEmailValidity("n.eeken@novi.nl"));
+console.log(checkEmailValidity("n.eekenanovi.nl"));
+console.log(checkEmailValidity("n.eeken@novinl."));
+console.log(checkEmailValidity("tessmellink@novi,nl"));

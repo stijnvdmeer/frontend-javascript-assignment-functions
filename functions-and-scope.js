@@ -16,6 +16,14 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 // ---- Verwachte uitkomst: 6
 
+// loop door de lijst
+//      voor elk element in de lijst
+//            is hoger dan 8:
+//              JA
+//                  Tel 1 op in een counter var
+//              NEE
+//                  ga verder met het volgende element
+//      geef de waarde van de counter var mee terug
 
 /*  1b: Omschrijven tot een herbruikbare functie   */
 // Schrijf een functie genaamd cumLaude, die een array van cijfers verwacht (zoals grades) en het aantal Cum laude studenten teruggeeft. Gebruik hiervoor jouw antwoord van 1a.
@@ -27,7 +35,17 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // cumLaude([6, 4, 5]) geeft 0
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
+function countCumLaudeStudents() {
+    let count = 0;
+    grades.forEach(grade => {
+        if (grade >= 8) {
+            count++;
+        }
+    });
+    return count;
+}
 
+console.log(countCumLaudeStudents());
 
 
 /* Opdracht  2: Gemiddeld cijfer */
@@ -42,6 +60,14 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 // ---- Verwachte uitkomst: 6.642857142857143
 
+// Maak aan een total variabel
+// Maak aan een count variabel
+// Loop door de lijst
+//      voor elke
+//          voeg waarde toe aan de total variabel
+//          tel 1 op bij de count var
+// Deel de total variabel door de count variabel
+// Geef deze waarde terug
 
 /* 2b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd averageGrade, die een array van cijfers verwacht (zoals grades) en het gemiddelde cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 2a.
@@ -53,12 +79,28 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // averageGrade([6, 4, 5]) geeft 5
 // averageGrade([8, 9, 4, 6, 10]) geeft 7.4
 
+function calcAvarageGrade(gradeList) {
+    let total = 0;
+    let count = 0;
+
+    gradeList.forEach(grade => {
+        total += grade;
+        count++;
+    })
+
+    return Math.round(((total / count) + Number.EPSILON) * 100) / 100;
+}
+
+console.log(calcAvarageGrade(grades));
+console.log(calcAvarageGrade([6, 4, 5]));
+console.log(calcAvarageGrade([8, 9, 4, 6, 10]));
 
 /* 2c: Afronden op twee decimalen */
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
 
-
+// Dit is aangepast op regel 91
+// Number.Epsilon word gebruikt zodat de 0.005 etc goed worden afgerond
 
 
 /* Bonusopdracht: hoogste cijfer */
@@ -72,13 +114,50 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 // ---- Verwachte uitkomst: 9
 
+//  Maak een variable highest aan
+//  Loop door de lijst en voor elke
+//      is het element hoger dan de value van highest:
+//          JA:
+//              Sla dan de value van het element op in highest
+//          NEE:
+//              Ga door naar het volgende element
+//  Return Highest
+
+// This can also be done using the array sort method and then using a comparing function
+// which is much less code but not allowed.
+
 
 /* 3b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd highestGrade, die een array van cijfers verwacht (zoals grades) en het hoogste cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 3a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
 // Log het antwoord in de terminal.
 
+function getHighestGrade(gradeList) {
+    let highestGrade = 0;
+    gradeList.forEach(grade => {
+        if(grade > highestGrade) highestGrade = grade;
+    })
+    return highestGrade;
+}
+
+console.log(getHighestGrade(grades));
+console.log(getHighestGrade([6, 4, 5]));
+console.log(getHighestGrade([8, 9, 4, 6, 10]));
+
 // ---- Verwachte uitkomsten:
 // highestGrade(grades) geeft 9
 // highestGrade([6, 4, 5]) geeft 6
 // highestGrade([8, 9, 4, 6, 10]) geeft 10
+
+// It can also be done more simply with this
+
+function getHighestGradeAlternate(gradeList) {
+    gradeList.sort((a, b) => a - b);
+    return gradeList[gradeList.length - 1];
+
+    // You can also reverse the array using the reverse method, and then call upon the index 0 instead of length - 1
+}
+
+console.log(getHighestGrade(grades));
+console.log(getHighestGrade([6, 4, 5]));
+console.log(getHighestGrade([8, 9, 4, 6, 10]));
