@@ -114,11 +114,24 @@ console.log(calcAvarageGrade([8, 9, 4, 6, 10]));
 
 // ---- Verwachte uitkomst: 9
 
+//  Maak een variable highest aan
+//  Loop door de lijst en voor elke
+//      is het element hoger dan de value van highest:
+//          JA:
+//              Sla dan de value van het element op in highest
+//          NEE:
+//              Ga door naar het volgende element
+//  Return Highest
+
+// This can also be done using the array sort method and then using a comparing function
+// which is much less code but not allowed.
+
 
 /* 3b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd highestGrade, die een array van cijfers verwacht (zoals grades) en het hoogste cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 3a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
 // Log het antwoord in de terminal.
+
 
 // ---- Verwachte uitkomsten:
 // highestGrade(grades) geeft 9
