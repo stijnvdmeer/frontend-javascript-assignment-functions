@@ -132,8 +132,30 @@ console.log(calcAvarageGrade([8, 9, 4, 6, 10]));
 // Zorg ervoor dat jouw functie ook werkt als we een andere array willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
 // Log het antwoord in de terminal.
 
+function getHighestGrade(gradeList) {
+    let highestGrade = 0;
+    gradeList.forEach(grade => {
+        if(grade > highestGrade) highestGrade = grade;
+    })
+    return highestGrade;
+}
+
+console.log(getHighestGrade(grades));
+console.log(getHighestGrade([6, 4, 5]));
+console.log(getHighestGrade([8, 9, 4, 6, 10]));
 
 // ---- Verwachte uitkomsten:
 // highestGrade(grades) geeft 9
 // highestGrade([6, 4, 5]) geeft 6
 // highestGrade([8, 9, 4, 6, 10]) geeft 10
+
+// It can also be done more simply with this
+
+function getHighestGradeAlternate(gradeList) {
+    gradeList.sort((a, b) => a - b);
+    return gradeList[gradeList.length - 1];
+}
+
+console.log(getHighestGrade(grades));
+console.log(getHighestGrade([6, 4, 5]));
+console.log(getHighestGrade([8, 9, 4, 6, 10]));
