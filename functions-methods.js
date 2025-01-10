@@ -26,6 +26,22 @@ console.log(getEmailDomain("a.wiersma@outlook.com"));
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
 
+function getEmailType(email) {
+    let emailDomain = email.split('@')[1];
+    switch (emailDomain) {
+        case 'novi-education.nl':
+            return "Student"
+        case 'novi.nl':
+            return "Medewerker"
+        default:
+            return "Extern"
+    }
+}
+
+console.log(getEmailType("n.eeken@novi-education.nl"));
+console.log(getEmailType("t.mellink@novi.nl"));
+console.log(getEmailType("novi.nlaapjesk@outlook.com"));
+console.log(getEmailType("a.wiersma@outlook.com"));
 
 
 /* Opdracht  3 */
